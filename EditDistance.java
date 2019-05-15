@@ -1,11 +1,13 @@
 public class EditDistance {
 	public static void main(String Args[]) {
-		String a = "baacda";
-		String b = "abace";
-		
-		distance(a,b);
+		if(Args.length == 2) {
+			String a = Args[0];
+			String b = Args[1];
+			System.out.println("kürzeste editier Distanze \nzwischen: " +a+ "\nund: " + b+ "\nbetraegt: " + distance(a,b));
+		} else {
+			System.out.println("falsche Eingabe");
+		}
 	}
-	
 	
 	public static int distance (String a, String b) {
 		
@@ -13,17 +15,6 @@ public class EditDistance {
 		
 		char [] ar = a.toCharArray();
 		char [] br = b.toCharArray();
-		
-		
-		for(char e: ar) {
-			System.out.print(e);
-		}
-		System.out.println();
-		
-		for(char e: br) {
-			System.out.print(e);
-		}
-		System.out.println();
 		
 		
 		array [0] [0] = 0;
@@ -59,27 +50,30 @@ public class EditDistance {
 		}
 		
 		
-		
-
+		//________Ausgabe feld______
 		for(int i = 0; i<ar.length+1; i++) {
 			for(int j = 0 ; j<br.length+1; j++) {
 				System.out.printf(" %2d ", array[i] [j]);
 			}
 			System.out.println();
 		}
+		//________________________
 		
-		return 1;
+		
+		return array[a.length()] [b.length()];
 	}
 }
 
-//			Ausgabe
-//			
-//			baacda
-//			abace
-//			  0   1   2   3   4   5 
-//			  1   1   1   2   3   4 
-//			  2   2   1   2   3   4 
-//			  3   3   2   1   2   3 
-//			  4   4   3   2   2   3 
-//			  5   5   4   3   3   3 
-//			  6   6   5   4   4   4
+//		Ausgabe
+//		
+//		  0   1   2   3   4   5 
+//		  1   1   1   2   3   4 
+//		  2   2   1   2   3   4 
+//		  3   3   2   1   2   3 
+//		  4   4   3   2   2   3 
+//		  5   5   4   3   3   3 
+//		  6   6   5   4   4   4 
+//		kürzeste editier Distanze 
+//		zwischen: baacda
+//		und: abace
+//		betraegt: 4
